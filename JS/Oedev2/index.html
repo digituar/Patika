@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <title>Yapılacaklar Listesi</title>
+  </head>
+  <body>
+    <div class="mr-1" style="position: relative">
+      <div style="position: absolute; top: 0; right: 0">
+        <div
+          id="liveToast"
+          class="toast success hide"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-delay="4000"
+        >
+          <div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">Listeye eklendi.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mr-1" style="position: relative">
+      <div style="position: absolute; top: 0; right: 0">
+        <div
+          id="liveToast"
+          class="toast error hide"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-delay="4000"
+        >
+          <div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">Listeye boş ekleme yapamazsınız!</div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://cdn.sanity.io/images/9kdepi1d/production/65c832d202a503b15d99e628f4313782f3ef50db-300x62.png"
+          class="mb-1"
+          alt=""
+        />
+        <h2>Yapılacaklar Listesi</h2>
+        <input type="text" id="task" placeholder="Bugün ne yapacaksın?" />
+        <span id="liveToastBtn" class="button">Ekle</span
+        >
+      </div>
+
+      <ul id="list">
+      </ul> 
+      <div class="footer">
+        <span>Listede <span class="pendingTasks"></span> yapılacaklar var</span>
+        <button>Hepsini sil</button>
+      </div>
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="script.js"></script>
+    </div>
+    <svg>
+      <defs>
+        <symbol id="delete-icon" viewBox="0 0 448 448"><path d="m224 0c-123.710938 0-224 100.289062-224 224s100.289062 224 224 224 224-100.289062 224-224c-.132812-123.65625-100.34375-223.867188-224-224zm124.449219 325.824219c4.15625 4.015625 5.828125 9.964843 4.363281 15.558593s-5.835938 9.964844-11.429688 11.429688-11.542968-.207031-15.558593-4.363281l-101.824219-101.824219-101.824219 101.824219c-6.277343 6.0625-16.257812 5.976562-22.429687-.195313s-6.257813-16.152344-.195313-22.429687l101.824219-101.824219-101.824219-101.824219c-4.15625-4.015625-5.828125-9.964843-4.363281-15.558593s5.835938-9.964844 11.429688-11.429688 11.542968.207031 15.558593 4.363281l101.824219 101.824219 101.824219-101.824219c6.277343-6.0625 16.257812-5.976562 22.429687.195313s6.257813 16.152344.195313 22.429687l-101.824219 101.824219zm0 0" fill="#D80027"/></symbol>
+      </defs>
+    </svg>
+  </body>
+</html>
