@@ -73,8 +73,6 @@ const menu = [{
 ];
 
 function InitializePage() {
-
-    //https://github.com/kazimanilaydin/patikadev_javascript_proj/tree/main/asiankitchen
     var menuItems = ["All"];
 
     menu.forEach((item) => {
@@ -83,7 +81,6 @@ function InitializePage() {
         }
     });
 
-    // make all category buttons
     var categoryButtonList = [];
 
     menuItems.forEach((categoryName) => {
@@ -97,18 +94,74 @@ function InitializePage() {
         categoryButtonList.push(categoryButton);
     });
 
-    //
     var categoryButtonContainer = document.querySelector(".btn-container");
 
     categoryButtonList.forEach((categoryButton) => {
         categoryButtonContainer.append(categoryButton);
     });
+
+    let menuItemsList = updateMenu("All");
+    updatePage(menuItemsList);
 }
 
-// category change event listener
-var onCategoryChange = (event) => {
+let onCategoryChange = (event) => {
     selectedCategory = event.target.getAttribute("category");
-    //updateScreen(selectedCategory);
+    console.log(selectedCategory);
+    let menuItems = updateMenu(selectedCategory);
+    updatePage(menuItems);
 };
+
+let updatePage = (list) => {
+    let menuSection = document.querySelector(".section-center");
+    menuSection.innerHTML = "";
+  
+    list.forEach((list) => {
+        menuSection.appendChild(list);
+    });
+}
+
+let updateMenu = (category) => {
+    var menuItemList = [];
+    
+    var filteredMenu = category === "All" ? menu : 
+    menu.filter((item) => {
+        return item.category === category;
+    });
+    
+    filteredMenu.forEach((list) => {
+        let menuItem = document.createElement("div");
+        menuItem.setAttribute("class", "menu-items col-md-6 col-sm-12");
+        
+        let menuImage = document.createElement("img");
+        menuImage.setAttribute("src", list.img);
+        menuImage.setAttribute("alt", list.title);
+        menuImage.setAttribute("class", "photo");
+
+        let menuInfo = document.createElement("div");
+        menuInfo.setAttribute("class", "menu-info");
+
+        let menuTitle = document.createElement("div");
+        menuTitle.setAttribute("class", "menu-title");
+        
+        let menuText = document.createElement("div");
+        menuText.setAttribute("class", "menu-text");
+        menuText.innerText = list.desc;
+
+        let titleHeader = document.createElement("h4");
+        titleHeader.innerText = list.title;
+        let price = document.createElement("h4");
+        price.innerText = list.price;
+        price.setAttribute("class", "price");
+
+        menuTitle.appendChild(titleHeader)
+        menuTitle.appendChild(price);
+        menuInfo.appendChild(menuTitle)
+        menuInfo.appendChild(menuText);
+        menuItem.appendChild(menuImage);
+        menuItem.appendChild(menuInfo);
+        menuItemList.push(menuItem);
+    });
+    return menuItemList;
+}
 
 InitializePage();
