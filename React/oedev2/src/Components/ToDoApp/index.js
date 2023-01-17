@@ -11,7 +11,6 @@ function ToDoApp() {
 
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(todoList))
-
     }, [todoList])
 
     let foot = null
@@ -33,7 +32,7 @@ function ToDoApp() {
     let toggleAll = null
     if (todoList.length > 0) {
         toggleAll = ( <div >
-                        <input type = "checkbox" id = "toggle-all" className = "toggle-all" checked = { done } onChange = { selectAll } /> 
+                        <input type = "checkbox" id = "toggle-atoll" className = "toggle-all" checked = { done } onChange = { selectAll } /> 
                         <label htmlFor = "toggle-all" onClick = { allDone } >all done </label>
                       </div>
         )
