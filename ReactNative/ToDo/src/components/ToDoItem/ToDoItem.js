@@ -1,13 +1,48 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Alert} from 'react-native';
 import styles from './ToDoItem.styles';
 
 const ToDoItem = props => {
+  const completeToDo = () => {
+    props.completeToDo(props.toDo.id);
+  };
+
+  const deleteToDo = () => {
+    props.deleteToDo(props.toDo.id);
+  };
+
+  const showConfirmDialog = () => {
+    return Alert.alert(
+      'Uyarı?',
+      '"' + props.toDo.value + '" silmek istediğinize emin misiniz?',
+      [
+        {
+          text: 'EVET',
+          onPress: () => {
+            deleteToDo();
+          },
+        },
+        {
+          text: 'HAYIR',
+        },
+      ],
+    );
+  };
   return (
-    <View style={styles.container}>
-      <View style={styles.item}>
-        <Text style={styles.toDoText}>{props.toDo}</Text>
-      </View>
+    <View
+      style={
+        props.toDo.isCompleted ? styles.containerCompleted : styles.container
+      }>
+      <TouchableWithoutFeedback
+        onPress={completeToDo}
+        onLongPress={showConfirmDialog}>
+        <Text
+          style={
+            props.toDo.isCompleted ? styles.toDoCompleted : styles.toDoText
+          }>
+          {props.toDo.value}
+        </Text>
+      </TouchableWithoutFeedback>
     </View>
   );
 };

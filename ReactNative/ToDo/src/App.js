@@ -8,7 +8,8 @@ const App = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setCount(todoList.length);
+    const filterList = todoList.filter(todo => todo.isCompleted === false);
+    setCount(filterList.length);
   }, [todoList]);
 
   const handleSubmit = value => {
@@ -20,7 +21,8 @@ const App = () => {
       return [
         {
           value: value,
-          key: Math.random().toString(),
+          id: Math.random().toString(),
+          isCompleted: false,
         },
         ...todos,
       ];
@@ -33,7 +35,7 @@ const App = () => {
         <Text style={styles.counter}>{count}</Text>
       </View>
       <View style={styles.list}>
-        <ToDoList todoList={todoList} />
+        <ToDoList todoList={todoList} setToDoList={setToDoList} />
       </View>
       <View style={styles.creation}>
         <ToDoCreation submitHandler={handleSubmit} todoList={todoList} />
